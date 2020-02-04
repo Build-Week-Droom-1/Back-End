@@ -19,6 +19,7 @@ router.post('/register', validateUserData, (req, res) => {
       res.status(201).json({message: 'user successfully created'});
     })
     .catch(err => {
+      console.log(err);
       res.status(500).json(err);
     })
 });
