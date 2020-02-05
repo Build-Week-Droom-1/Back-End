@@ -6,8 +6,14 @@ const jobRouter = require('../jobs/jobs-router')
 
 const server = express();
 
+const corsOptions = {
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
+  };
+
 server.use(helmet());
-server.use(cors());
+server.use(cors(corsOptions));
 server.use(express.json());
 
 server.use('/api/auth', router);
