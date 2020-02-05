@@ -38,9 +38,13 @@ exports.up = function (knex) {
       //   .notNullable()
       //   .inTable("users")
     }); 
+
+    
 };
 
 
 exports.down = function (knex, Promise) {
   return knex.schema.dropTableIfExists('users');
 };
+
+// name, location, occupation, highest education, work experience, skills, interests
