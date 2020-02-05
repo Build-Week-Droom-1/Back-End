@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const router = require('../auth/auth-router.js');
+const jobRouter = require('../jobs/jobs-router')
 
 const server = express();
 
@@ -10,6 +11,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', router);
+server.use('/api/jobs', jobRouter);
 
 server.get('/', async (req, res) => {
     try {
