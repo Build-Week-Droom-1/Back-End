@@ -1,57 +1,78 @@
 # Back-End
 
-### **Authentication Routes**
+## User Endpoints
 
-###  **User Registration**:
+### POST - Register a User
+`https://droom-project-lambda.herokuapp.com/api/auth/register`
 
-#### POST */api/auth/register*
-
-Creates a new user account.
-Returns an object with user info and a JSON web token.
-
-Request:
-```javascript
-{
-  email: "example@email.com", // string (required) [ must be in proper email format ]
-  password: "abc123!", // string (required) [ min. 6 total characters | min. 1 special character | min. 1 digit ]
-  user_name: "username", // string (required)
-  role: "Job Seeker" // string (required) 
-}
+Sample schema:
 ```
-Response:
-
-```javascript
-{
-  "message": "user successfully created"
-}
+       {
+          "first_name": "John",
+          "last_name": "Doe",
+          "email": "johndoe@yahoo.com",
+          "password": "E@kd92",
+          "occupation": "Manager",
+          "past_experience": "CEO",
+          "interests": "Long walks on the beach"
+        } 
 ```
 
-### **User Login** 
-[back to top](#api-user-guide)
-#### POST */api/auth/login*
+### POST - Login
+`https://droom-project-lambda.herokuapp.com/api/auth/login`
 
-Validates user's credentials.
-Returns an object with user info and a JSON web token.
-
-Request:
-```javascript
-{
-  email: "example@email.com", // string (required)
-  password: "abc123!", // string (required)
-}
+Sample schema:
+```
+        {
+          "email": "johndoe@yahoo.com",
+          "password": "password
+        }
 ```
 
-Response:
-```javascript
+### GET - All Users **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/auth/users`
+
+### GET - User by ID **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/auth/user/:id`
+
+(Example: `https://droom-project-lambda.herokuapp.com/api/auth/user/7` will get data for user with the id of '7')
+
+### PUT - Edit User Info **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/auth/user/:id`
+
+### DELETE - Delete User **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/auth/user/:id`
+
+
+## Jobs Endpoints
+
+### GET - All Jobs Listings
+`https://droom-project-lambda.herokuapp.com/api/jobs`
+
+### GET - Jobs Listing By ID
+`https://droom-project-lambda.herokuapp.com/api/jobs/:id`
+
+### GET - Jobs Listings By User ID
+`https://droom-project-lambda.herokuapp.com/api/jobs/user/:id`
+
+### POST - New Job **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/jobs`
+
+Sample schema: 
+Note: If no image is provided, it will default to a colored box
+```
 {
-  user: {
-      id: 1,
-      role_id: 1,
-      email: "example@email.com",
-      first_name: "firstname",
-      last_name: "lastname",
-      role: "Student"
-  },
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwicm9sZV9pZCI6MSwiaWF0IjoxNTc3MTY1MDY3LCJleHAiOjE1NzcxNjg2Njd9.pg1rqfKM5BxyLssMVyL8xrCW9BjKZhmqIrODlZp16Kk"
+    "img_url": "https://ibb.co/8gcLPWj",
+    "title": "Movie Critic",
+    "salary": "$75,000 per year",
+    "description": "Enter description here",
+    "user_id": 1
 }
 ```
+### PUT - Edit a Job Listing **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/jobs/:id`
+
+### DELETE - Delete a Job Listing **requires token in header**
+`https://droom-project-lambda.herokuapp.com/api/jobs/:id`
+
+
