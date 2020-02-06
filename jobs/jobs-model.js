@@ -6,6 +6,7 @@ module.exports = {
   insert,
   update,
   remove,
+  getJobsByUser
 };
 
 function get() {
@@ -18,20 +19,23 @@ function getById(id) {
     .first();
 }
 
+function getJobsByUser(id) {
+    return db('jobs as j')
+        .where('j.user_id', id) // fix this
+}
+
 function insert(job) {
   return db('jobs')
-    .insert(job)
-    .then(ids => {
-      return getById(ids[0]);
+    .insert(job, 'id')
+    .then(id => {
+      return getJobsByUser(id[0]);
     });
 }
 
-async function update(id, changes) {
-  await db('jobs')
+function update(id, changes) {
+  return db('jobs')
     .where({ id })
     .update(changes);
-
-  return getById(id);
 }
 
 function remove(id) {
