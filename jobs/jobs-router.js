@@ -24,6 +24,26 @@ router.get('/:id', (req, res) => {
         })
 });
 
+router.get("/user/:id", (req, res) => {
+    const { id } = req.params;
+    db.getById(id)
+        .then(user => {
+            if (user) {
+                db.getJobsByUser(id)
+                .then(jobs => {
+                    if (jobs.length) {
+                        res.status(200).json(jobs);
+                    } else {
+                        res.status(404).json({ message: "The user does not have jobs selected" });
+                    }
+                });
+            } else {
+                res.status(404).json({ message: `User ${id} does not exist` });
+            }
+        })
+        .catch(err => res.send(console.log(err)));
+});
+
 router.post('/', Utils.validateJob, (req, res) => {
     const job = req.body;
     if (job) {
