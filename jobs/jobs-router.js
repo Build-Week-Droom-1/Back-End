@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
         })
 });
 
-router.post('/', Utils.validateJobId, (req, res) => {
+router.post('/', Utils.validateJob, (req, res) => {
     const job = req.body;
     if (job) {
     db.insert(job)

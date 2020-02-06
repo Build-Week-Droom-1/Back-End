@@ -9,14 +9,11 @@ const logger = (req,res,next)=>{
 const validateJob=(req,res,next) =>{
     if(!req.body){
         res.status(400).json({message:'missing job data'})
-    }else{
-        if(!req.body.text){
-            res.status(400).json({message:"missing required text field"})
         }else{
             next();
         }
     }
-}
+
 function validateJobId(req, res, next) {
     jobDB.getById(req.params.id)
     .then((job)=>{
@@ -27,6 +24,7 @@ function validateJobId(req, res, next) {
         }
     })
     .catch(err=>{
+        console.log(err)
         res.status(500).json({err})
     })
   }
