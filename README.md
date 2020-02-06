@@ -8,13 +8,11 @@
 Sample schema:
 ```
        {
-          "first_name": "John",
-          "last_name": "Doe",
+          "name": "John Doe",
           "email": "johndoe@yahoo.com",
           "password": "E@kd92",
           "occupation": "Manager",
-          "past_experience": "CEO",
-          "interests": "Long walks on the beach"
+          "work_experience": "CEO",
         } 
 ```
 
@@ -62,7 +60,6 @@ Sample schema:
 Note: If no image is provided, it will default to a colored box
 ```
 {
-    "img_url": "https://ibb.co/8gcLPWj",
     "title": "Movie Critic",
     "salary": "$75,000 per year",
     "description": "Enter description here",
