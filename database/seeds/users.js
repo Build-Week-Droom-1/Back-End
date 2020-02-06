@@ -6,9 +6,9 @@ exports.seed = function(knex) {
       .then(function() {
         // Inserts seed entries
         return knex("users").insert([
-          { username: "pmiddleton", password: "password1", email: "pres.10.nap@gmail.com", role: "Employer" },
-          { username: "tdepew", password: "password1", email: "tdepew@gmail.com", role: "Job Seeker" },
-          { username: "jdesir", password: "password1", email: "jdesir@gmail.com", role: "Job Seeker" }
+          { "username": "pmiddleton", "password": "password1", "name": "Preston Middleton", "email": "pres.10.nap@gmail.com", "occupation": null, "work_experience": null, "role": "Job Seeker" },
+          { "username": "tdepew", "password": "password1", "name": "Tristan Depew", "email": "tdepew@gmail.com", "occupation": null, "work_experience": null, "role": "Job Seeker" },
+          { "username": "jdesir", "password": "password1", "name": "Jeffery Desir", "email": "jdesir@gmail.com", "occupation": null, "work_experience": null, "role": "Job Seeker" }
         ]);
       });
   };

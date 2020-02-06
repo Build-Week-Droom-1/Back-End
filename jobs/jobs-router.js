@@ -5,15 +5,15 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     db.get()
-        .then((users) => {
-            res.status(200).json({ users })
+        .then((jobs) => {
+            res.status(200).json({ jobs })
         })
         .catch((err) => {
             res.json({ err })
         })
 });
 
-router.get('/:id', Utils.validateJobId, (req, res) => {
+router.get('/:id', (req, res) => {
     const id = req.params.id;
     db.getById(id)
         .then(job => {
@@ -25,7 +25,8 @@ router.get('/:id', Utils.validateJobId, (req, res) => {
 });
 
 router.post('/', Utils.validateJobId, (req, res) => {
-    const user = req.body;
+    const job = req.body;
+    if (job) {
     db.insert(job)
         .then((job) => {
             res.status(200).json({ job })
@@ -34,6 +35,9 @@ router.post('/', Utils.validateJobId, (req, res) => {
             console.log(error);
             res.status(500).json({ error })
         })
+    } else {
+        res.status(400).json({ errorMessage: "Please fill in all required fields" });
+    }
 });
 
 router.delete('/:id', Utils.validateJobId, (req, res) => {
