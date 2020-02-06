@@ -8,11 +8,13 @@
 Sample schema:
 ```
        {
+          "username": "John_Doe",
           "name": "John Doe",
           "email": "johndoe@yahoo.com",
           "password": "E@kd92",
           "occupation": "Manager",
           "work_experience": "CEO",
+          "role": "Job Seeker"
         } 
 ```
 
@@ -22,7 +24,7 @@ Sample schema:
 Sample schema:
 ```
         {
-          "email": "johndoe@yahoo.com",
+          "username": "John_Doe",
           "password": "password
         }
 ```
@@ -57,7 +59,6 @@ Sample schema:
 `https://droom-project-lambda.herokuapp.com/api/jobs`
 
 Sample schema: 
-Note: If no image is provided, it will default to a colored box
 ```
 {
     "title": "Movie Critic",
