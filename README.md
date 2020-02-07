@@ -61,7 +61,7 @@ Sample schema:
 Sample schema: 
 ```
 {
-    "jpb_title": "Movie Critic",
+    "job_title": "Movie Critic",
     "salary": "$75,000 per year",
     "job_desc": "Enter description here",
     "user_id": 1
